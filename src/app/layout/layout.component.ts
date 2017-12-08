@@ -18,7 +18,6 @@ const MAINTITLES=['主导航','管理系统'];
 export class LayoutComponent {
     isFetching = false;
     
-    
     navTitles = NAVTITLES;
     mainTitles = MAINTITLES;
     pickedTitle:string = '会展大厅';
