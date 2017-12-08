@@ -4,6 +4,10 @@ import { Router, NavigationEnd, RouteConfigLoadStart, NavigationError } from '@a
 // import { SettingsService } from '@core/services/settings.service';
 // import { ScrollService } from '@core/services/scroll.service';
 import { NzMessageService } from 'ng-zorro-antd';
+
+import { Store } from '@ngrx/store'
+import { LogoutAction } from '../routes/page/login/login.action'
+
 const NAVTITLES=["会展大厅","智能终端管理","数据管理","我的展会","约请审核"];
 const MAINTITLES=['主导航','管理系统'];
 @Component({
@@ -14,6 +18,7 @@ const MAINTITLES=['主导航','管理系统'];
 export class LayoutComponent {
     isFetching = false;
     
+    
     navTitles = NAVTITLES;
     mainTitles = MAINTITLES;
     pickedTitle:string = '会展大厅';
@@ -23,11 +28,15 @@ export class LayoutComponent {
       this.pickedTitle = navTitle;
       this.pickedMainTitle = navTitle == '会展大厅'? '主导航':'管理系统';
     }
+    logout(){
+        this.store.dispatch(new LogoutAction())
+    }
     constructor(
         router: Router,
         // scroll: ScrollService,
         private _message: NzMessageService,
         // public settings: SettingsService
+        private store: Store<any>,
     ) {
         // scroll to top in change page
         router.events.subscribe(evt => {
