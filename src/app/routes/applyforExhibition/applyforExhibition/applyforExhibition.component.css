@@ -1,0 +1,22 @@
+.btnCenter{
+    display:block;
+    margin:0 auto;
+}
+.iconPos{
+    position: relative;
+}
+.iconPos .iconCSS{
+    background-color:#87d068;
+    position: absolute;
+    left:50%;
+    top:45px;
+    margin-left:-20px;
+}
+.txtCenter{
+    text-align:center;
+}
+.card:hover{
+    border:1px solid rgba(110, 110, 110, 0.76)!important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8)!important;
+    border-color: transparent;
+}

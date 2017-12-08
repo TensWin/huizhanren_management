@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  SERVER_URL: 'https://salesProxy.xiaovbao.cn',
+  production: true,
 };

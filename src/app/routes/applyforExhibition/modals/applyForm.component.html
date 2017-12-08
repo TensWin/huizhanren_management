@@ -1,0 +1,83 @@
+<div class="container pr-lg">
+  <form nz-form [nzType]="'horizontal'" [formGroup]="applyForm">
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="6">
+        <label nz-form-item-required>会展名称</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('ItemName')" nzHasFeedback>
+        <nz-input formControlName="ItemName" [nzType]="'text'" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControlError('ItemName','required')">
+          必填项
+        </div>
+      </div>  
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="6">
+        <label nz-form-item-required>组织协会</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('Organizer')" nzHasFeedback>
+        <nz-input formControlName="Organizer" [nzType]="'text'" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControlError('Organizer','required')">
+          必填项
+        </div>
+      </div>            
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-form-label nz-col [nzSpan]="6">
+        <label nz-form-item-required>举办地址</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('Place')" nzHasFeedback>
+        <nz-input formControlName="Place" [nzType]="'text'" [nzSize]="'large'">
+        </nz-input>
+        <div nz-form-explain *ngIf="getFormControlError('Place','required')">
+          必填项
+        </div>        
+      </div>
+    </div>
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label nz-form-item-required>开展日期</label>
+        </div>
+        <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('StartTime')" nzHasFeedback>
+          <nz-datepicker style="width:85%;" formControlName="StartTime" (ngModelChange)="_startDate=$event;_startValueChange()" 
+          [ngModel]="_startDate" [nzDisabledDate]="_disabledStartDate" [nzFormat]="'YYYY/MM/DD'">
+          </nz-datepicker>
+          <div nz-form-explain *ngIf="getFormControlError('StartTime','required')">
+            必选项
+          </div>
+        </div>          
+    </div>    
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label nz-form-item-required>闭展日期</label>
+        </div>              
+        <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('EndTime')" nzHasFeedback>  
+          <nz-datepicker style="width:85%;" formControlName="EndTime" (ngModelChange)="_endDate=$event;_endValueChange()" 
+          [ngModel]="_endDate" [nzDisabledDate]="_disabledEndDate" [nzFormat]="'YYYY/MM/DD'">
+          </nz-datepicker>
+          <div nz-form-explain *ngIf="getFormControlError('EndTime','required')">
+            必选项
+          </div>
+        </div>               
+    </div>
+
+    <div nz-form-item nz-row>
+      <div nz-col [nzSpan]="6" nz-form-label>
+        <label>备注</label>
+      </div>
+      <div nz-col [nzSpan]="12" nz-form-control [nzValidateStatus]="getFormControl('description')">
+        <nz-input formControlName="description" [nzRows]="2" [nzType]="'textarea'" [nzSize]="'large'">
+        </nz-input>
+      </div>
+    </div>              
+  </form>
+  <div class="footer">
+    <button nz-button (click)="cancel()">取消</button>
+    <button nz-button [nzType]="'primary'" [disabled]="applyForm.invalid" (click)="ok()">确定</button>
+  </div>      
+</div>

@@ -1,0 +1,66 @@
+
+<nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <div class="logo">
+        <header style="text-align:center;">
+          <img src="../assets/imgs/logo.png" *ngIf="!isCollapsed">
+          <img src="../assets/imgs/logo2.png" style="margin-top:5px;" width="30px" *ngIf="isCollapsed">
+        </header>
+      </div>
+
+      <div nz-dropdown class="user-block-dropdown" style="padding:25px;" *ngIf="!isCollapsed">
+        <nz-avatar class="avatar" [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
+        <div class="info">
+            <h2><strong style="color:white">admin</strong></h2>  
+        </div>
+      </div>
+      <div nz-dropdown class="user-block-dropdown" style="padding:15px;" *ngIf="isCollapsed">
+          <nz-avatar class="avatar" [nzIcon]="'user'" [nzSize]="'default'" style="text-align:left;"></nz-avatar>
+      </div>
+      
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+        <li nz-submenu>
+          <span title><i class="anticon anticon-user"></i><span class="nav-text">主导航</span></span>
+          <ul>
+            <li nz-menu-item><a routerLink='/hall' (click)="pickedOption(navTitles[0])">{{navTitles[0]}}</a></li>
+          </ul>
+        </li>
+        <li nz-submenu>
+          <span title><i class="anticon anticon-team"></i><span class="nav-text">管理</span></span>
+          <ul>
+            <li nz-menu-item><a routerLink='/applyForExhibition' (click)="pickedOption(navTitles[3])">{{navTitles[3]}}</a></li>
+            <li nz-menu-item><a routerLink='/terminal-management' (click)="pickedOption(navTitles[1])">{{navTitles[1]}}</a></li>
+            <li nz-menu-item><a routerLink='/data-management' (click)="pickedOption(navTitles[2])">{{navTitles[2]}}</a></li>
+            <li nz-menu-item><a routerLink='/applyForInvitation' (click)="pickedOption(navTitles[4])">{{navTitles[4]}}</a></li>          
+          </ul>
+        </li>
+        <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">File</span></span></li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header style="background: #fff; padding:0;display:flex;align-items:center;">
+        <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" 
+        (click)="isCollapsed=!isCollapsed"></i>
+        <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" class="btn">
+            <div nz-dropdown><i class="anticon anticon-setting" style="font-size:24px"></i></div>
+            <ul nz-menu class="pt-sm pb-sm" style="width:200px">
+                <li nz-menu-item (click)="logout()">
+                    <i class="anticon anticon-tool"></i>
+                    登出
+                </li>    
+            </ul>
+        </nz-dropdown>        
+      </nz-header>
+      <nz-content style="margin:0 16px;">
+        <nz-breadcrumb style="margin:12px 0;">
+          <nz-breadcrumb-item>{{pickedMainTitle}}</nz-breadcrumb-item>
+          <nz-breadcrumb-item>{{pickedTitle}}</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div style="padding:24px; background: #fff; min-height: 800px;">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+      <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+    </nz-layout>
+  </nz-layout>
+  

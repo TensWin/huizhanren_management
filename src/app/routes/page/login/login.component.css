@@ -1,0 +1,36 @@
+body{
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+}
+img{
+    vertical-align: middle;
+}
+button{
+    width: 100%;
+}
+.ant-input{
+    width: 90% !important;
+}
+.wrapper{
+    width:360px;
+    height:auto;
+    margin: 50px auto;
+}
+.text-center{
+    text-align: center!important; 
+}
+.ant-card-head {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    /* padding: 0 24px; */
+    border-radius: 2px 2px 0 0;
+    zoom: 1;
+    margin-bottom: -1px;
+    min-height: 48px;
+}
+/* .ant-card-body {
+    padding: 0 48px!important;
+} */
+.p-lg {
+    margin: 0 24px!important;
+}

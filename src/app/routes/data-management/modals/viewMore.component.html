@@ -1,0 +1,8 @@
+<nz-table #nzTable [nzAjaxData]="Audience$">
+    <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of Audience$ | async;let id = index">
+      <td nz-td>{{id+1}}.{{data.companies[0]}}
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>

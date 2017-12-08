@@ -1,0 +1,111 @@
+<div class="content__title">
+    <h1>展会管理</h1>
+</div>
+      
+      <nz-card>
+        <ng-template #title>申请展会</ng-template>
+        <ng-template #body>
+          <div nz-row [nzGutter]="16">
+            <div nz-col [nzMd]="6">
+              <nz-card class="card">
+                <ng-template #title>
+                    <div class="txtCenter">填写表单</div> 
+                </ng-template>
+                <ng-template #body>
+                  <button nz-button [nzType]="'primary'" class="mr-sm btnCenter" (click)="toApply()">
+                    <span>立刻申请展会</span>
+                  </button>
+                </ng-template>
+              </nz-card>
+            </div>
+            <div nz-col [nzMd]="3" class="iconPos">
+                <nz-avatar class="avatar" [nzIcon]="'double-right'" [nzSize]="'large'" 
+               class="iconCSS"></nz-avatar>
+            </div>
+            <div nz-col [nzMd]="6">
+              <nz-card class="card">
+                <ng-template #title>
+                    <div class="txtCenter">等待审核</div>  
+                </ng-template>
+                <ng-template #body>                  
+                  <button nz-button [nzType]="'primary'" class="mr-sm btnCenter">
+                    <span>查看审核进程</span>
+                  </button>
+                </ng-template>
+              </nz-card>
+            </div>
+            <div nz-col [nzMd]="3" class="iconPos">
+                <nz-avatar class="avatar" [nzIcon]="'double-right'" [nzSize]="'large'" 
+               class="iconCSS"></nz-avatar>
+            </div>
+            <div nz-col [nzMd]="6">
+              <nz-card class="card">
+                <ng-template #title>
+                    <div class="txtCenter">正式登记</div>
+                </ng-template>
+                <ng-template #body>                  
+                  <button nz-button [nzType]="'primary'" class="mr-sm btnCenter" (click)="toCreateDiscountActivity()">
+                    <span>查询我的展会</span>
+                  </button>
+                </ng-template>
+              </nz-card>
+            </div>
+          </div>
+        </ng-template>
+      </nz-card>
+      
+      <nz-card>
+        <ng-template #title>待审核</ng-template>
+        <ng-template #body>
+          <nz-table #nzTable [nzAjaxData]="CheckingExhibition$" [nzPageSize]="10">
+            <thead nz-thead>
+            <tr>
+              <th nz-th nz-col [nzSpan]="2"><span>申请日期</span></th>
+              <th nz-th nz-col [nzSpan]="6"><span>会展名称</span></th>
+              <th nz-th nz-col [nzSpan]="5"><span>组织协会</span></th>
+              <th nz-th nz-col [nzSpan]="3"><span>开展日期</span></th>
+              <th nz-th nz-col [nzSpan]="3"><span>闭展日期</span></th>
+              <th nz-th nz-col [nzSpan]="5"><span>会展地址</span></th>
+            </tr>
+            </thead>
+            <tbody nz-tbody>
+            <tr nz-tbody-tr *ngFor="let data of CheckingExhibition$ | async">
+              <td nz-th nz-col [nzSpan]="2">{{data.CreatedAt}}</td>
+              <td nz-td nz-col [nzSpan]="6">{{data.ExName}}</td>
+              <td nz-td nz-col [nzSpan]="5">{{data.Organizer}}</td>
+              <td nz-td nz-col [nzSpan]="3">{{data.StartTime}}</td>
+              <td nz-td nz-col [nzSpan]="3">{{data.EndTime}}</td>
+              <td nz-td nz-col [nzSpan]="5">{{data.Place}}</td>
+            </tr>
+            </tbody>
+          </nz-table>
+        </ng-template>
+      </nz-card>
+
+      <nz-card>
+        <ng-template #title>已通过</ng-template>
+        <ng-template #body>
+            <nz-table #nzTable [nzAjaxData]="" [nzPageSize]="10">
+                <thead nz-thead>
+                <tr>
+                  <th nz-th nz-col [nzSpan]="2"><span>登记日期</span></th>
+                  <th nz-th nz-col [nzSpan]="6"><span>会展名称</span></th>
+                  <th nz-th nz-col [nzSpan]="5"><span>组织协会</span></th>
+                  <th nz-th nz-col [nzSpan]="3"><span>开展日期</span></th>
+                  <th nz-th nz-col [nzSpan]="3"><span>闭展日期</span></th>
+                  <th nz-th nz-col [nzSpan]="5"><span>会展地址</span></th>
+                </tr>
+                </thead>
+                <!-- <tbody nz-tbody>
+                <tr nz-tbody-tr *ngFor="let data of CheckingExhibition$ | async">
+                  <td nz-th nz-col [nzSpan]="2">未知</td>
+                  <td nz-td nz-col [nzSpan]="6">{{data.ExName}}</td>
+                  <td nz-td nz-col [nzSpan]="5">{{data.Organizer}}</td>
+                  <td nz-td nz-col [nzSpan]="3">{{data.StartTime}}</td>
+                  <td nz-td nz-col [nzSpan]="3">{{data.EndTime}}</td>
+                  <td nz-td nz-col [nzSpan]="5">{{data.Place}}</td>
+                </tr>
+                </tbody> -->
+              </nz-table>
+        </ng-template>
+      </nz-card>
