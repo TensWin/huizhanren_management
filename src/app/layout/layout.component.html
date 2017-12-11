@@ -37,8 +37,8 @@
         <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">File</span></span></li>
       </ul>
     </nz-sider>
-    <nz-layout>
-      <nz-header style="background: #fff; padding:0;display:flex;align-items:center;">
+    <nz-layout class="layout-bg">
+      <nz-header style="background:rgba(255,255,255,0.25); padding:0;display:flex;align-items:center;">
         <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" 
         (click)="isCollapsed=!isCollapsed"></i>
         <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" class="btn">
@@ -56,11 +56,11 @@
           <nz-breadcrumb-item>{{pickedMainTitle}}</nz-breadcrumb-item>
           <nz-breadcrumb-item>{{pickedTitle}}</nz-breadcrumb-item>
         </nz-breadcrumb>
-        <div style="padding:24px; background: #fff; min-height: 800px;">
+        <div style="padding:24px; background: rgba(255,255,255,0.25); min-height: 800px;">
           <router-outlet></router-outlet>
         </div>
       </nz-content>
-      <nz-footer style="text-align: center;">Ant Design ©2017 Implement By Angular</nz-footer>
+      <nz-footer style="text-align: center;color:white;">Ant Design ©2017 Implement By Angular</nz-footer>
     </nz-layout>
   </nz-layout>
   

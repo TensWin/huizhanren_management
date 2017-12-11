@@ -28,7 +28,7 @@ export class LoginEffects {
         .map(function(user) {
           return new fromLogin.LoginSuccessAction(user)})
         .catch(errorMsg => {
-          const msg = errorMsgMap[errorMsg] || errorMsg
+          const msg = '用户名或密码错误!'
           return Observable.of(new fromLogin.LoginFailureAction(msg))
         })
     })

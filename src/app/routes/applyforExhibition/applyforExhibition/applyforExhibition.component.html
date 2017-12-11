@@ -1,13 +1,12 @@
 <div class="content__title">
     <h1>展会管理</h1>
-</div>
-      
-      <nz-card>
+</div>     
+      <nz-card class="card">
         <ng-template #title>申请展会</ng-template>
         <ng-template #body>
           <div nz-row [nzGutter]="16">
             <div nz-col [nzMd]="6">
-              <nz-card class="card">
+              <nz-card class="card card-imp">
                 <ng-template #title>
                     <div class="txtCenter">填写表单</div> 
                 </ng-template>
@@ -54,11 +53,11 @@
         </ng-template>
       </nz-card>
       
-      <nz-card>
+      <nz-card class="card">
         <ng-template #title>待审核</ng-template>
         <ng-template #body>
           <nz-table #nzTable [nzAjaxData]="CheckingExhibition$" [nzPageSize]="10">
-            <thead nz-thead>
+            <thead nz-thead class="thead">
             <tr>
               <th nz-th nz-col [nzSpan]="2"><span>申请日期</span></th>
               <th nz-th nz-col [nzSpan]="6"><span>会展名称</span></th>
@@ -68,7 +67,7 @@
               <th nz-th nz-col [nzSpan]="5"><span>会展地址</span></th>
             </tr>
             </thead>
-            <tbody nz-tbody>
+            <tbody nz-tbody class="tbody">
             <tr nz-tbody-tr *ngFor="let data of CheckingExhibition$ | async">
               <td nz-th nz-col [nzSpan]="2">{{data.CreatedAt}}</td>
               <td nz-td nz-col [nzSpan]="6">{{data.ExName}}</td>
@@ -82,11 +81,11 @@
         </ng-template>
       </nz-card>
 
-      <nz-card>
+      <nz-card class="card">
         <ng-template #title>已通过</ng-template>
         <ng-template #body>
             <nz-table #nzTable [nzAjaxData]="" [nzPageSize]="10">
-                <thead nz-thead>
+                <thead nz-thead class="thead">
                 <tr>
                   <th nz-th nz-col [nzSpan]="2"><span>登记日期</span></th>
                   <th nz-th nz-col [nzSpan]="6"><span>会展名称</span></th>
@@ -96,8 +95,8 @@
                   <th nz-th nz-col [nzSpan]="5"><span>会展地址</span></th>
                 </tr>
                 </thead>
-                <!-- <tbody nz-tbody>
-                <tr nz-tbody-tr *ngFor="let data of CheckingExhibition$ | async">
+                <!-- <tbody nz-tbody class="tbody">
+                <tr *ngFor="let data of CheckingExhibition$ | async">
                   <td nz-th nz-col [nzSpan]="2">未知</td>
                   <td nz-td nz-col [nzSpan]="6">{{data.ExName}}</td>
                   <td nz-td nz-col [nzSpan]="5">{{data.Organizer}}</td>

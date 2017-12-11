@@ -29,7 +29,8 @@ import { log } from 'util';
 
 @Component({
   selector: 'app-invitation-page',
-  templateUrl: './invitation.component.html'
+  templateUrl: './invitation.component.html',
+  styleUrls:['./invitation.component.css']
 })
 export class ApplyForInvitationComponent {
   FetchInvitation$: Observable<any>

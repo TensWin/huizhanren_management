@@ -4,3 +4,52 @@
 .marginLeft{
   margin-left: 15px;
 }
+:host ::ng-deep .ant-card-head{
+  background:rgba(0,0,0,0.25);
+}
+:host ::ng-deep .ant-card-head-title{
+  color:white;
+  font-weight: 500;
+  font-size:16px;
+}
+
+:host ::ng-deep .ant-table{
+  color: rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-table tr td{
+  border-bottom: 1px solid rgba(172,174,188,.3);
+  white-space : nowrap;
+}
+:host ::ng-deep .ant-table tr:hover{
+  background:rgba(33,150,243,.15)!important;
+}
+:host ::ng-deep .ant-table-tbody tr:hover td{
+  background:rgba(33,150,243,.15)!important;
+}
+
+
+:host ::ng-deep .ant-pagination-prev,:host ::ng-deep .ant-pagination-next {
+  border: 1px solid rgba(172,174,188,.8);
+  background:rgba(255,255,255,0.4);
+  color:rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-pagination-prev:hover,:host ::ng-deep .ant-pagination-next:hover {
+  border:none;
+  background:rgba(255,255,255,0.7);
+}
+:host ::ng-deep .ant-select-selection {
+  background: transparent;
+  border: 1px solid rgba(172,174,188,.8);
+  color:rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-pagination-item,:host ::ng-deep .ant-pagination-item:hover {
+  border: 1px solid rgba(172,174,188,.8);
+  background: transparent;
+}
+:host ::ng-deep .ant-pagination-item-active {
+  background-color: #108ee9;
+  border-color: #108ee9;
+}
+:host ::ng-deep .ant-pagination-item a {
+  color:rgba(255,255,255,0.95);
+}

@@ -7,6 +7,17 @@
     font-size:16px;
 }
 
+.ant-card-bordered{
+    border:none;
+}
+.ant-card:not(.ant-card-no-hovering):hover {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    border-color: transparent;
+}
+.card{
+    margin:30px auto;
+    background:rgba(0,0,0,0.35);
+}
 :host ::ng-deep .ant-table{
     color: rgba(255,255,255,0.95);
 }
@@ -16,6 +27,15 @@
 }
 :host ::ng-deep .ant-table tr:hover{
     background:rgba(33,150,243,.15)!important;
+}
+.thead tr th{
+    background:rgba(0,0,0,0);
+    color:rgba(255,255,255,0.95); 
+    border-bottom: 1px solid rgba(172,174,188,.3);   
+}
+.tbody tr:hover{
+    background:rgba(33,150,243,.15)!important;
+    
 }
 :host ::ng-deep .ant-table-tbody tr:hover td{
     background:rgba(33,150,243,.15)!important;
@@ -46,4 +66,17 @@
 }
 :host ::ng-deep .ant-pagination-item a {
     color:rgba(255,255,255,0.95);
+}
+
+
+.disabled{
+    cursor:not-allowed;
+    color:rgba(255,255,255,0.6);
+    user-select:none;
+}
+.usable-false{
+    color: #FEC006;
+}
+.usable-true{
+    color: #FEC006;
 }

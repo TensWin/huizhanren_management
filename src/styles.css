@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin:0;
+    padding:0;
+}
+:host ::ng-deep .ant-card-head{
+    background:rgba(0,0,0,0.25);
+}
+:host ::ng-deep .ant-card-head-title{
+    color:white;
+    font-weight: 500;
+    font-size:16px;
+}
+
+.ant-card-bordered{
+    border:none;
+}
+.ant-card:not(.ant-card-no-hovering):hover {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    border-color: transparent;
+}
+.card{
+    margin:30px auto;
+    background:rgba(0,0,0,0.35);
+}
+:host ::ng-deep .ant-table{
+    color: rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-table tr td{
+    border-bottom: 1px solid rgba(172,174,188,.3);
+    white-space : nowrap;
+}
+:host ::ng-deep .ant-table tr:hover{
+    background:rgba(33,150,243,.15)!important;
+}
+.thead tr th{
+    background:rgba(0,0,0,0);
+    color:rgba(255,255,255,0.95); 
+    border-bottom: 1px solid rgba(172,174,188,.3);   
+}
+.tbody tr:hover{
+    background:rgba(33,150,243,.15)!important;
+    
+}
+:host ::ng-deep .ant-table-tbody tr:hover td{
+    background:rgba(33,150,243,.15)!important;
+}
+
+
+:host ::ng-deep .ant-pagination-prev,:host ::ng-deep .ant-pagination-next {
+    border: 1px solid rgba(172,174,188,.8);
+    background:rgba(255,255,255,0.4);
+    color:rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-pagination-prev:hover,:host ::ng-deep .ant-pagination-next:hover {
+    border:none;
+    background:rgba(255,255,255,0.7);
+}
+:host ::ng-deep .ant-select-selection {
+    background: transparent;
+    border: 1px solid rgba(172,174,188,.8);
+    color:rgba(255,255,255,0.95);
+}
+:host ::ng-deep .ant-pagination-item,:host ::ng-deep .ant-pagination-item:hover {
+    border: 1px solid rgba(172,174,188,.8);
+    background: transparent;
+}
+:host ::ng-deep .ant-pagination-item-active {
+    background-color: #108ee9;
+    border-color: #108ee9;
+}
+:host ::ng-deep .ant-pagination-item a {
+    color:rgba(255,255,255,0.95);
+}
+
+
+.disabled{
+    cursor:not-allowed;
+    color:rgba(255,255,255,0.6);
+    user-select:none;
+}
+.usable-false{
+    color: #FEC006;
+}
+.usable-true{
+    color: #FEC006;
+}

@@ -1,5 +1,5 @@
 <h1>数据管理</h1>
-<nz-card>
+<nz-card class="card">
   <ng-template #body>
     <form nz-form [formGroup]="phoneSearch" (ngSubmit)="search()">
       <div nz-row nz-form-item>
@@ -17,17 +17,17 @@
     </form>
   </ng-template> 
 </nz-card>
-<nz-card>
+<nz-card class="card">
   <ng-template #body>
     <nz-table #nzTable [nzAjaxData]="Audience$" [nzPageSize]="10">
-      <thead nz-thead>
+      <thead nz-thead class="thead">
       <tr>
         <th nz-th><span>观众编号</span></th>
         <th nz-th><span>手机号码</span></th>
         <th nz-th><span>停留展商</span></th>
       </tr>
       </thead>
-      <tbody nz-tbody>
+      <tbody nz-tbody class="tbody">
       <tr nz-tbody-tr *ngFor="let data of Audience$ | async;let id = index">
         <td nz-td>{{id+1}}</td>
         <td nz-td>{{data.tel}}</td>

@@ -49,8 +49,7 @@ export class LoginService {
           UserPassword: password
         }
       })
-      .map(res => (res as any).result[0])
-      //.map(res =>{if((res as any).result[0]){return (res as any).result[0]}else{return '用户名与密码不一致'}})
+      .map(res => (res as any).result[0])      
       .map(e => ({
         tenantId: e.TenantId,
         userId: e.UserId,

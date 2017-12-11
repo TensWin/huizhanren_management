@@ -2,39 +2,43 @@
     <h1>约请审核</h1>
 </div>
 
-<nz-card>
-    <ng-template #title>展商与观众的约请</ng-template>
+<nz-card class="card" >
+    <ng-template #title>
+      <div>展商与观众的约请</div>
+    </ng-template>
     <ng-template #body>
-      <nz-table #nzTable [nzAjaxData]="FetchInvitation$ | async" [(nzPageSize)]="Vsize" 
+      <nz-table #nzTable [nzAjaxData]="FetchInvitation$ | async" [(nzPageSize)]="Vsize"
       [nzShowSizeChanger]="true" [nzTotal]="InvitationLength$ | async" [(nzPageIndex)]="Vindex"
       (nzPageIndexChange)="chooseInvitorData(Vindex,Vsize)" (nzPageSizeChange)="chooseInvitorData(Vindex,Vsize)">
-        <thead nz-thead>
+        <thead nz-thead class="thead">
         <tr>
+          <th nz-th nz-col [nzSpan]="3"><span>发起时间</span></th>
           <th nz-th nz-col [nzSpan]="3"><span>姓名</span></th>
           <th nz-th nz-col [nzSpan]="3"><span>职称</span></th>
-          <th nz-th nz-col [nzSpan]="4"><span>公司</span></th>
+          <th nz-th nz-col [nzSpan]="3"><span>公司</span></th>
           <!-- <th nz-th nz-col [nzSpan]="4"><span>industry</span></th> -->
           <th nz-th nz-col [nzSpan]="3"><span>籍贯</span></th>
-          <th nz-th nz-col [nzSpan]="4"><span>组织</span></th>
-          <th nz-th nz-col [nzSpan]="4"><span>审核状态</span></th>
+          <th nz-th nz-col [nzSpan]="3"><span>组织</span></th>
+          <th nz-th nz-col [nzSpan]="3"><span>审核状态</span></th>
           <th nz-th nz-col [nzSpan]="3"><span>操作</span></th>
         </tr>
         </thead>
-        <tbody nz-tbody>
+        <tbody nz-tbody class="tbody">
         <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+          <td nz-th nz-col [nzSpan]="3">{{data.createAt}}</td>
           <td nz-th nz-col [nzSpan]="3">{{data.name}}</td>
           <td nz-td nz-col [nzSpan]="3">{{data.title}}</td>
-          <td nz-td nz-col [nzSpan]="4">{{data.company}}</td>
+          <td nz-td nz-col [nzSpan]="3">{{data.company}}</td>
           <!-- <td nz-td nz-col [nzSpan]="4">{{data.industry}}</td> -->
           <td nz-td nz-col [nzSpan]="3">{{data.area}}</td>
-          <td nz-td nz-col [nzSpan]="4">{{data.organizer}}</td>
-          <td nz-td nz-col [nzSpan]="4">{{data.state}}</td>
+          <td nz-td nz-col [nzSpan]="3">{{data.organizer}}</td>
+          <td nz-td nz-col [nzSpan]="3">{{data.state}}</td>
           <td nz-td nz-col [nzSpan]="3">
-            <a (click)="rejectVisitor(data._id)" *ngIf="data.state === '未审核'"><span>拒绝</span></a>
-            <span *ngIf="data.state !== '未审核'" style="cursor:not-allowed;color:darkgray;user-select:none;">拒绝</span>
+            <a (click)="rejectVisitor(data._id)" *ngIf="data.state === '未审核'"><span class="usable-false">拒绝</span></a>
+            <span *ngIf="data.state !== '未审核'" class="disabled">拒绝</span>
             <span nz-table-divider></span>
-            <a (click)="agreeVisitor(data._id)" *ngIf="data.state === '未审核'"><span>通过</span></a>
-            <span *ngIf="data.state !== '未审核'" style="cursor:not-allowed;color:darkgray;user-select:none;">通过</span>
+            <a (click)="agreeVisitor(data._id)" *ngIf="data.state === '未审核'"><span class="usable-true">通过</span></a>
+            <span *ngIf="data.state !== '未审核'" class="disabled">通过</span>
           </td>
         </tr>
         </tbody>        
@@ -42,37 +46,39 @@
     </ng-template>
   </nz-card>
 
-  <nz-card>
+  <nz-card class="card">
     <ng-template #title>展商与展商的约请</ng-template>
     <ng-template #body>
         <nz-table #nzTable [nzAjaxData]="FetchExhibitor$ | async" [(nzPageSize)]="Esize" 
         [nzShowSizeChanger]="true" [(nzPageIndex)]="Eindex" [nzTotal]="10"
         (nzPageIndexChange)="chooseExhibitorData(Eindex,Esize)" (nzPageSizeChange)="chooseExhibitorData(Eindex,Esize)">
-            <thead nz-thead>
+            <thead nz-thead class="thead">
             <tr>
+              <th nz-th nz-col [nzSpan]="4" ><span>发起时间</span></th>
               <th nz-th nz-col [nzSpan]="4"><span>公司名称</span></th>
               <!-- <th nz-th nz-col [nzSpan]="4"><span>logo</span></th> -->
-              <th nz-th nz-col [nzSpan]="4"><span>展位</span></th>
-              <th nz-th nz-col [nzSpan]="4"><span>所属行业</span></th>
-              <th nz-th nz-col [nzSpan]="4"><span>展区分布</span></th>
+              <th nz-th nz-col [nzSpan]="3"><span>展位</span></th>
+              <!-- <th nz-th nz-col [nzSpan]="3"><span>所属行业</span></th> -->
+              <th nz-th nz-col [nzSpan]="3"><span>展区分布</span></th>
               <th nz-th nz-col [nzSpan]="4"><span>审核状态</span></th>
-              <th nz-th nz-col [nzSpan]="4"><span>操作</span></th>
+              <th nz-th nz-col [nzSpan]="3"><span>操作</span></th>
             </tr>
             </thead>
             <tbody nz-tbody>
             <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+              <td nz-th nz-col [nzSpan]="4">{{data.createAt}}</td>
               <td nz-td nz-col [nzSpan]="4">{{data.name}}</td>
               <!-- <td nz-td nz-col [nzSpan]="4">{{data.logo}}</td> -->
-              <td nz-td nz-col [nzSpan]="4">{{data.booth}}</td>
-              <td nz-td nz-col [nzSpan]="4">{{data.industry}}</td>
-              <td nz-td nz-col [nzSpan]="4">{{data.area}}</td>
+              <td nz-td nz-col [nzSpan]="3">{{data.booth}}</td>
+              <!-- <td nz-td nz-col [nzSpan]="3">{{data.industry}}</td> -->
+              <td nz-td nz-col [nzSpan]="3">{{data.area}}</td>
               <td nz-td nz-col [nzSpan]="4">{{data.state}}</td>
-              <td nz-td nz-col [nzSpan]="4">
-                <a (click)="rejectExhibitor(data._id)" *ngIf="data.state === '未审核'"><span>拒绝</span></a> 
-                <span *ngIf="data.state !== '未审核'" style="cursor:not-allowed;color:darkgray;user-select:none;">拒绝</span>          
+              <td nz-td nz-col [nzSpan]="3">
+                <a (click)="rejectExhibitor(data._id)" *ngIf="data.state === '未审核'"><span class="usable-false">拒绝</span></a> 
+                <span *ngIf="data.state !== '未审核'" class="disabled">拒绝</span>          
                 <span nz-table-divider></span>
-                <a (click)="agreeExhibitor(data._id)" *ngIf="data.state === '未审核'"><span>通过</span></a>
-                <span *ngIf="data.state !== '未审核'" style="cursor:not-allowed;color:darkgray;user-select:none;">通过</span>
+                <a (click)="agreeExhibitor(data._id)" *ngIf="data.state === '未审核'"><span class="usable-true">通过</span></a>
+                <span *ngIf="data.state !== '未审核'" class="disabled">通过</span>
               </td>
             </tr>
             </tbody>

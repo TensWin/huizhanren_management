@@ -27,7 +27,7 @@
     transition: color .3s;
 }
 
-:host ::ng-deep .trigger:hover {
+ .trigger:hover {
     color: #108ee9;
 }
 .btn{
@@ -43,4 +43,9 @@
     background-color: rgba(0,0,0,0.1);
     color: #108ee9;
 }
-
+.layout-bg{
+    background: url('../../assets/imgs/bg.jpg') no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size:cover;
+}

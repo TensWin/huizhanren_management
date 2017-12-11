@@ -1,5 +1,5 @@
 <h1>智能终端管理</h1>
-<nz-card>
+<nz-card class="card">
   <ng-template #title>展商查询</ng-template>
   <ng-template #body>
     <form nz-form [formGroup]="searchForm" (ngSubmit)="search()">
@@ -24,7 +24,7 @@
     </form>
   </ng-template>
 </nz-card>
-<nz-card>
+<nz-card class="card">
   <ng-template #title>
     <div class="text-right"> 
       <button nz-button [nzType]="'primary'">
@@ -45,7 +45,7 @@
   </ng-template>
   <ng-template #body>    
     <nz-table #nzTable [nzAjaxData]="Exhibitor$" [nzPageSize]="10">
-      <thead nz-thead>
+      <thead nz-thead class="thead">
       <tr>
         <th nz-th nz-col [nzSpan]="2"><span class="marginLeft">终端号</span></th>
         <th nz-th nz-col [nzSpan]="6"><span>会展名称</span></th>
@@ -55,7 +55,7 @@
         <th nz-th nz-col [nzSpan]="3"><span>操作</span></th>
       </tr>
       </thead>
-      <tbody nz-tbody>
+      <tbody nz-tbody class="tbody">
       <tr nz-tbody-tr *ngFor="let data of Exhibitor$ | async;let id = index">
         <td nz-td nz-col [nzSpan]="2"><span class="marginLeft">{{id+1}}</span></td>
         <td nz-td nz-col [nzSpan]="6"><a routerLink='/terminal-management/exhibitionDetail' (click)='getExName(data.ItemName)'>{{data.ItemName}}</a></td>

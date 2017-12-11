@@ -34,6 +34,7 @@ export class InvitationService {
            .get(this.serverUrl + this.visitorUrl + this.local.organizerId)
            .map(resp =>(resp as APIResponse).result.map((item) => ({
                 _id:item._id,
+                createAt:item.CreatedAt.slice(0,-3),
                 state:item.State,
                 name:item.Name,
                 title:item.JobTitle,
@@ -57,6 +58,7 @@ export class InvitationService {
           .get(this.serverUrl + this.exhibitorUrl + this.local.organizerId)
           .map(resp => (resp as APIResponse).result.map((item) => ({
             _id:item._id,
+            createAt:item.CreatedAt.slice(0,-3),
             state:item.State,
             name:item.companyName,
             // logo:item.logo,

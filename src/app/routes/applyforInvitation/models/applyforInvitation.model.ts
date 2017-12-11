@@ -1,5 +1,6 @@
 export class VisitorInvitation{
     _id:string
+    createAt:string
     state:string
     name:string
     title:string
@@ -10,6 +11,7 @@ export class VisitorInvitation{
 }
 export class ExhibitorInvitation{
     _id:string
+    createAt:string
     state:string
     name:string
     // logo:string
