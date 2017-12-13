@@ -7,18 +7,20 @@
         <div nz-form-label nz-col [nzSm]="2">
           <label>会展名称</label>
         </div>
-        <div nz-form-control nz-col [nzSm]="5">
+        <div nz-form-control nz-col [nzSm]="4">
           <nz-input formControlName="name"></nz-input>
         </div>
         <div nz-form-label nz-col [nzSm]="2">
           <label>公司名称</label>
         </div>
-        <div nz-form-control nz-col [nzSm]="5">
+        <div nz-form-control nz-col [nzSm]="4">
           <nz-input formControlName="company"></nz-input>
         </div>
-        <div nz-col [nzSm]="6" [nzOffset]="4">
-          <button nz-button [nzType]="'primary'" type="submit">查询</button>
-          <button nz-button type="reset">清空</button>
+        <div nz-col [nzSm]="12">
+          <div class="text-right">
+            <button nz-button [nzType]="'primary'" type="submit" style="margin-right:2px;white-space: nowrap;">&nbsp;&nbsp;查&nbsp;&nbsp;询&nbsp;&nbsp;</button>
+            <button nz-button type="reset" style="margin-right:2px;white-space: nowrap;">&nbsp;&nbsp;清&nbsp;&nbsp;空&nbsp;&nbsp;</button>
+         </div>          
         </div>
       </div>
     </form>
@@ -26,7 +28,8 @@
 </nz-card>
 <nz-card class="card">
   <ng-template #title>
-    <div class="text-right"> 
+    展商信息
+    <div class="right"> 
       <button nz-button [nzType]="'primary'">
         <span>添加展商</span>
       </button>
@@ -44,7 +47,7 @@
     </div>
   </ng-template>
   <ng-template #body>    
-    <nz-table #nzTable [nzAjaxData]="Exhibitor$" [nzPageSize]="10">
+    <nz-table #nzTable [nzAjaxData]="Exhibitor$ | async" [nzPageSize]="10">
       <thead nz-thead class="thead">
       <tr>
         <th nz-th nz-col [nzSpan]="2"><span class="marginLeft">终端号</span></th>
@@ -56,7 +59,7 @@
       </tr>
       </thead>
       <tbody nz-tbody class="tbody">
-      <tr nz-tbody-tr *ngFor="let data of Exhibitor$ | async;let id = index">
+      <tr nz-tbody-tr *ngFor="let data of nzTable.data;let id = index">
         <td nz-td nz-col [nzSpan]="2"><span class="marginLeft">{{id+1}}</span></td>
         <td nz-td nz-col [nzSpan]="6"><a routerLink='/terminal-management/exhibitionDetail' (click)='getExName(data.ItemName)'>{{data.ItemName}}</a></td>
         <td nz-td nz-col [nzSpan]="5"><a >{{data.companyName}}</a></td>

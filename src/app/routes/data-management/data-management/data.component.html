@@ -1,25 +1,29 @@
 <h1>数据管理</h1>
 <nz-card class="card">
+  <ng-template #title>观众查询</ng-template>
   <ng-template #body>
     <form nz-form [formGroup]="phoneSearch" (ngSubmit)="search()">
       <div nz-row nz-form-item>
         <div nz-form-label nz-col [nzSm]="2">
-          <label>手机精确查询</label>
+          <label>手机查询</label>
         </div>
-        <div nz-form-control nz-col [nzSm]="5">
+        <div nz-form-control nz-col [nzSm]="4">
           <nz-input formControlName="phone"></nz-input>
         </div>
-        <div nz-col [nzSm]="6" [nzOffset]="4">
-          <button nz-button [nzType]="'primary'" type="submit">查询</button>
-          <button nz-button type="reset">清空</button>
+        <div nz-col [nzSm]="10" [nzOffset]="8">
+          <div class="text-right">
+              <button nz-button [nzType]="'primary'" type="submit">&nbsp;&nbsp;查&nbsp;&nbsp;询&nbsp;&nbsp;</button>
+              <button nz-button type="reset">&nbsp;&nbsp;清&nbsp;&nbsp;空&nbsp;&nbsp;</button>
+          </div>
         </div> 
       </div>
     </form>
   </ng-template> 
 </nz-card>
 <nz-card class="card">
+  <ng-template #title>观众信息</ng-template>
   <ng-template #body>
-    <nz-table #nzTable [nzAjaxData]="Audience$" [nzPageSize]="10">
+    <nz-table #nzTable [nzAjaxData]="Audience$ | async" [nzPageSize]="10">
       <thead nz-thead class="thead">
       <tr>
         <th nz-th><span>观众编号</span></th>
@@ -28,14 +32,14 @@
       </tr>
       </thead>
       <tbody nz-tbody class="tbody">
-      <tr nz-tbody-tr *ngFor="let data of Audience$ | async;let id = index">
+      <tr nz-tbody-tr *ngFor="let data of nzTable.data;let id = index">
         <td nz-td>{{id+1}}</td>
         <td nz-td>{{data.tel}}</td>
         <td nz-td>{{data.companies[0]}}
           <span nz-table-divider></span>
-          <a (click)="viewMore()" *ngIf="data.companies.length>1;else elseBlock"><span>查看全部</span></a>
+          <a (click)="viewMore(data.tel)" *ngIf="data.companies.length>1;else elseBlock"><span class="usable">查看全部</span></a>
           <ng-template #elseBlock>
-            <span style="cursor:not-allowed;color:darkgray;user-select:none;">查看全部</span>
+            <span class="disabled">查看全部</span>
           </ng-template>
         </td>
       </tr>

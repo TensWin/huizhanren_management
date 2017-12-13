@@ -1,7 +1,12 @@
-<nz-table #nzTable [nzAjaxData]="Audience$">
+<nz-table #nzTable [nzAjaxData]="Audience$ | async" [nzIsPagination]="false">
     <tbody nz-tbody>
-    <tr nz-tbody-tr *ngFor="let data of Audience$ | async;let id = index">
-      <td nz-td>{{id+1}}.{{data.companies[0]}}
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data;">
+      <td nz-td *ngIf="data.tel === _tel">
+        <ul>
+           <li *ngFor="let company of data.companies;let i = index">
+               {{i+1}}.{{company}}
+           </li>
+        </ul>
       </td>
     </tr>
     </tbody>

@@ -6,9 +6,29 @@
     font-weight: 500;
     font-size:16px;
 }
+.ant-card{
+    background: rgba(0, 0, 0, 0.35);
+}
+.ant-card-bordered{
+    border:none;
+}
+.ant-card:not(.ant-card-no-hovering):hover {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+    border-color: transparent;
+}
+/*内部card很丑*/
+.card-inner{
+    background: transparent;
+    border:1px solid rgba(255,255,255,0.6);
+}
 
 :host ::ng-deep .ant-table{
     color: rgba(255,255,255,0.95);
+}
+.thead tr th{
+    background:rgba(0,0,0,0);
+    color:rgba(255,255,255,0.95); 
+    border-bottom: 1px solid rgba(172,174,188,.3);   
 }
 :host ::ng-deep .ant-table tr td{
     border-bottom: 1px solid rgba(172,174,188,.3);
@@ -46,4 +66,26 @@
 }
 :host ::ng-deep .ant-pagination-item a {
     color:rgba(255,255,255,0.95);
+}
+
+
+:host ::ng-deep .ant-form-item {
+    margin-bottom:0;
+}
+.ant-form-item-label label {
+    color: rgba(255,255,255,.85);
+}
+:host ::ng-deep .ant-input {
+    height: 32px;
+    color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(255,255,255,0.9);
+}
+:host ::ng-deep .ant-input:hover {
+    box-shadow: 0 0 0 2px #49a9ee;
+}
+:host ::ng-deep .ant-input::-webkit-input-placeholder {
+    color:#999;font-size:14px;
+}
+:host ::ng-deep .has-error .ant-form-explain, .has-error .ant-form-split {
+    color: #ff7875;
 }

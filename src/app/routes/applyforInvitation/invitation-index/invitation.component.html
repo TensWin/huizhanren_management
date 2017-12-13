@@ -23,7 +23,7 @@
           <th nz-th nz-col [nzSpan]="3"><span>操作</span></th>
         </tr>
         </thead>
-        <tbody nz-tbody class="tbody">
+        <tbody nz-tbody>
         <tr nz-tbody-tr *ngFor="let data of nzTable.data">
           <td nz-th nz-col [nzSpan]="3">{{data.createAt}}</td>
           <td nz-th nz-col [nzSpan]="3">{{data.name}}</td>
@@ -55,7 +55,7 @@
             <thead nz-thead class="thead">
             <tr>
               <th nz-th nz-col [nzSpan]="4" ><span>发起时间</span></th>
-              <th nz-th nz-col [nzSpan]="4"><span>公司名称</span></th>
+              <th nz-th nz-col [nzSpan]="7"><span>公司名称</span></th>
               <!-- <th nz-th nz-col [nzSpan]="4"><span>logo</span></th> -->
               <th nz-th nz-col [nzSpan]="3"><span>展位</span></th>
               <!-- <th nz-th nz-col [nzSpan]="3"><span>所属行业</span></th> -->
@@ -67,7 +67,7 @@
             <tbody nz-tbody>
             <tr nz-tbody-tr *ngFor="let data of nzTable.data">
               <td nz-th nz-col [nzSpan]="4">{{data.createAt}}</td>
-              <td nz-td nz-col [nzSpan]="4">{{data.name}}</td>
+              <td nz-td nz-col [nzSpan]="7">{{data.name}}</td>
               <!-- <td nz-td nz-col [nzSpan]="4">{{data.logo}}</td> -->
               <td nz-td nz-col [nzSpan]="3">{{data.booth}}</td>
               <!-- <td nz-td nz-col [nzSpan]="3">{{data.industry}}</td> -->

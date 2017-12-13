@@ -14,7 +14,7 @@ export class DataService {
     fetchAudience():Observable<Audience[]> {
         return this.http
             .get(this.serverUrl + this.queryAudienceUrl)
-            .map(resp => (resp as APIResponse).result)
+            .map(resp => (resp as APIResponse).result).do(a=>console.log(a))
             .catch(this.handleError)
     }
     searchAudience(

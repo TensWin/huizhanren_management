@@ -40,8 +40,8 @@ export class DataComponent {
       tel: this.phoneSearch.value.phone
     })
   }
-  viewMore() {
-    this.viewMoreSub.next()
+  viewMore(tel) {
+    this.viewMoreSub.next(tel)
   }
   constructor(
     private store: Store<any>,
@@ -70,17 +70,15 @@ export class DataComponent {
   private initViewMore(): void {
     const viewMore$ = this.viewMoreSub
       .asObservable()
-      .mergeMap(() => {
+      .mergeMap((tel) => {
         return this.modalService.open({
           title: '全部展商',
           content: ViewMoreComponent,
           wrapClassName: 'modal-lg',
           footer: false,
-          maskClosable: false
+          maskClosable: false,
+          componentParams:{telphone:tel}
         })
-      })
-      .filter(e => {
-        return typeof e !== 'string'
       })
       .takeUntil(this.destroyService)
 
