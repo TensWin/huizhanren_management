@@ -47,7 +47,7 @@
     </div>
   </ng-template>
   <ng-template #body>    
-    <nz-table #nzTable [nzAjaxData]="Exhibitor$ | async" [nzPageSize]="10">
+    <nz-table #nzTable [nzAjaxData]="Exhibitor$ | async" [nzPageSize]="10" [nzIsPagination]="false">
       <thead nz-thead class="thead">
       <tr>
         <th nz-th nz-col [nzSpan]="2"><span class="marginLeft">终端号</span></th>

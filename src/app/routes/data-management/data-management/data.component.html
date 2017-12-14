@@ -23,7 +23,7 @@
 <nz-card class="card">
   <ng-template #title>观众信息</ng-template>
   <ng-template #body>
-    <nz-table #nzTable [nzAjaxData]="Audience$ | async" [nzPageSize]="10">
+    <nz-table #nzTable [nzAjaxData]="Audience$ | async" [nzPageSize]="10" [nzIsPagination]="false">
       <thead nz-thead class="thead">
       <tr>
         <th nz-th><span>观众编号</span></th>
