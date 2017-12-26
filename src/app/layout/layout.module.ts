@@ -4,7 +4,7 @@ import { StoreModule } from '@ngrx/store'
 // import { reducers } from './reducers'
 
 import { SharedModule } from '../../share/share.module'
-import { LayoutComponent } from './layout.component'
+// import { LayoutComponent } from './layout.component'
 
 
 @NgModule({
@@ -13,6 +13,8 @@ import { LayoutComponent } from './layout.component'
     // StoreModule.forFeature('layout', reducers)
   ],
   providers: [],
-  declarations: [LayoutComponent],
+  declarations: [
+    // LayoutComponent
+  ],
 })
 export class LayoutModule {}

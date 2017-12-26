@@ -14,7 +14,7 @@ import { LoginService } from './services/login.service'
 // import { RegisterSuccessComponent } from './register-success/register-success.component'
 import { LoginComponent } from './login/login.component'
 // import { LockComponent } from './lock/lock.component'
-// import { ForgetComponent } from './forget/forget.component'
+import { ForgetComponent } from './forget/forget.component'
 
 const effects = [
     LoginEffects, 
@@ -29,7 +29,7 @@ const effects = [
     declarations:[
         // RegisterComponent,
         LoginComponent,
-        // ForgetComponent
+        ForgetComponent
     ],
     providers:[
         LoginService,
