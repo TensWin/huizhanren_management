@@ -49,6 +49,7 @@ export class LoginService {
           UserPassword: password
         }
       })
+      .do(a=>console.log(a))
       .map(res => (res as any).result[0])      
       .map(e => ({
         tenantId: e.TenantId,

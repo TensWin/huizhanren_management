@@ -45,7 +45,7 @@ export class LoginEffects {
       this.localStorage.set('name', name)
       this.localStorage.set('companyName', companyName)
       this.localStorage.set('organizerId', organizerId)
-      this.router.navigate(['hall'])
+      this.router.navigate(['option'])
     })   
 
 //   @Effect()

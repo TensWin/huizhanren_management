@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="wrapper">
+    <nz-card [nzNoHovering]="true" [nzBordered]="false" class="login">
+      <ng-template #title>
+        <div class="text-center">
+           欢迎您{{company}}company
+        </div>
+      </ng-template>
+      <ng-template #body>
+        <nz-table #nzTable nzCustomNoResult="true">
+        <tbody nz-tbody>
+        <tr nz-tbody-tr>
+          <td nz-td nz-col [nzSpan]="8">管理员:</td>
+          <td nz-td nz-col [nzSpan]="16"><span class="right">{{name}}name</span></td>
+        </tr>
+        <tr nz-tbody-tr>
+          <td nz-td nz-col [nzSpan]="8">当前用户:</td>
+          <td nz-td nz-col [nzSpan]="16"><span class="right">{{user}}admin</span></td>
+        </tr>
+        <tr nz-tbody-tr>
+          <td nz-td nz-col [nzSpan]="8">手机号:</td>
+          <td nz-td nz-col [nzSpan]="16"><span class="right">{{phone}}phone</span></td>
+        </tr>
+        <tr nz-tbody-tr>
+          <td nz-td nz-col [nzSpan]="8" style="height:50px;">选择项目:</td>
+          <td nz-td nz-col [nzSpan]="16" style="height:50px;">
+            <nz-select style="width: 100%;margin-top:-5px;" class="right" [(ngModel)]="selectedOption" [nzPlaceHolder]="'请选择您的项目'" nzAllowClear>
+              <nz-option
+                *ngFor="let option of BaseInfo$ | async"
+                [nzLabel]="option.ExName"
+                [nzValue]="option.RecordId"
+                [nzDisabled]="option.disabled">
+              </nz-option>
+            </nz-select>
+          </td>
+        </tr>
+        <tr nz-tbody-tr>
+          <td nz-td nz-col [nzSpan]="8">使用期限:</td>
+          <td nz-td nz-col [nzSpan]="16"><span class="right">{{limitDate}}limitDate</span></td>
+        </tr>              
+        </tbody>        
+      </nz-table>
+      <button nz-button [nzLoading]="loading$ | async" [nzType]="'primary'" [nzSize]="'large'" (click)="enter()">
+        <span>进入</span>
+      </button> 
+      </ng-template>
+    </nz-card>
+    <div class="text-center">
+      &copy;2017 - 小V宝 <br>
+      Copyright © 2012-2017 Tenswin. 
+      <br>All Rights Reserved.
+    </div>
+  </div>
+</div>

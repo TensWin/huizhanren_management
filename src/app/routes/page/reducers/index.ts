@@ -1,11 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
 import * as fromLogin from '../login/login.reducer'
 // import * as fromRegister from '../register/register.reducer'
+import * as fromOption from '../option/option.reducer'
 import * as fromRoot from '../../../reducers'
 
 export interface PagesState {
   login: fromLogin.State
 //   register: fromRegister.State
+  option: fromOption.State
 }
 
 export interface State extends fromRoot.State {
@@ -15,6 +17,7 @@ export interface State extends fromRoot.State {
 export const reducers = {
   login: fromLogin.reducer,
 //   register: fromRegister.reducer
+  option: fromOption.reducer
 }
 
 export const getPagesModuleState = createFeatureSelector<PagesState>('pages')
@@ -40,3 +43,11 @@ export const getLoginFailureMsg = createSelector(getLoginState, fromLogin.getLog
 //   getRegisterState,
 //   fromRegister.getLoading
 // )
+export const getOptionState = createSelector(
+  getPagesModuleState, (state: PagesState) => state.option
+)
+export const getOptionLoading = createSelector(
+  getOptionState,
+  fromOption.getLoading
+)
+export const getUserInfo = createSelector(getOptionState, fromOption.getUserInfo)

@@ -13,10 +13,10 @@ export const emptyPageChooseParams: PageChooseParams = {
 @Injectable()
 export class InvitationService {
     private serverUrl = 'http://huizhanren.xiaovbao.cn'
-    private visitorUrl = '/v1/data/InvitationInfo?role=O&organizerId='
-    private exhibitorUrl = '/v1/data/ExhibitionInvitationInfo?role=O&organizerId='
-    private optVistiorUrl = '/v1/data/InvitationInfo'
-    private optExhibitorUrl = '/v1/data/ExhibitionInvitationInfo'
+    private visitorUrl = '/v1/data/org/invitationInfo?exhibitionId='
+    private exhibitorUrl = '/v1/data/org/ExhibitionInvitationInfo?exhibitionId='
+    private optVistiorUrl = '/v1/data/update/inviinfo'
+    private optExhibitorUrl = '/v1/data/update/exhiinviinfo'
     constructor(
         private http:HttpClient,
         private local:LocalStorageService
@@ -31,19 +31,34 @@ export class InvitationService {
         //             organizer:'organizer1'
         //             }]).delay(1e3)
         return this.http
-           .get(this.serverUrl + this.visitorUrl + this.local.organizerId)
-           .map(resp =>(resp as APIResponse).result.map((item) => ({
-                _id:item._id,
-                createAt:item.CreatedAt.slice(0,-3),
-                state:item.State,
-                name:item.Name,
-                title:item.JobTitle,
-                company:item.CompName,
-                // industry:item.industry,
-                area:item.Province,
-                organizer:item.Organizer
-                })))
-           .map(arr => arr.filter(obj=>obj.state === "未审核").concat(arr.filter(obj=>obj.state !== "未审核")))          
+           .get(this.serverUrl + this.visitorUrl + this.local.exhibitionId)
+           .map(resp =>(resp as APIResponse).result
+                .map((item) => {
+                    console.log(item)
+                    if (item.Type == '0'){
+                        console.log(0)
+                        return {
+                            _id:item._id,
+                            createAt:item.CreatedAt.slice(0,-3),
+                            state:item.State,
+                            name:item.Initator[0].Name,
+                            company:item.Initator[0].CompName,
+                            // industry:item.industry,
+                        }
+                    }else if(item.Type == '1'){
+                        // console.log(1)
+                        let audience = item.Initator[0].LinkList.map(item=>item.LinkName).join(",")
+                        return {
+                            _id:item._id,
+                            createAt:item.CreatedAt.slice(0,-3),
+                            state:item.State,
+                            name:item.Receiver[0].CompName,
+                            company:audience,
+                            // industry:item.industry,
+                        }
+                    }
+                })).do(a=>console.log(a))
+           .map(arr => arr.filter(obj=>obj.state === "2").concat(arr.filter(obj=>obj.state !== "2")))          
            .catch(this.handleError)
     }
     fetchExhibitor(params = emptyPageChooseParams) :Observable<ExhibitorInvitation[]>{
@@ -55,48 +70,59 @@ export class InvitationService {
         //     area:'area1',
         //     }]).delay(1e3)
         return this.http 
-          .get(this.serverUrl + this.exhibitorUrl + this.local.organizerId)
-          .map(resp => (resp as APIResponse).result.map((item) => ({
-            _id:item._id,
-            createAt:item.CreatedAt.slice(0,-3),
-            state:item.State,
-            name:item.companyName,
-            // logo:item.logo,
-            booth:item.BoothNo,
-            industry:item.Industry,
-            area:item.boothArea
-            })))
-          .map(arr => arr.filter(obj=>obj.state === "未审核").concat(arr.filter(obj=>obj.state !== "未审核")))               
+          .get(this.serverUrl + this.exhibitorUrl + this.local.exhibitionId).do(a=>console.log(a))
+          .map(resp => (resp as APIResponse).result.map((item) => {
+              if(item.Receiver == false){
+                   return ({
+                        _id:item._id,
+                        createAt:item.CreatedAt.slice(0,-3),
+                        state:item.State,
+                        name:"未注明",
+                        // booth:item.Receiver[0].BoothNo,
+                        initatorComp:item.Initator[0].companyName
+                   })
+              }else{
+                  return ({
+                        _id:item._id,
+                        createAt:item.CreatedAt.slice(0,-3),
+                        state:item.State,
+                        name:item.Receiver[0].companyName,
+                        // booth:item.Receiver[0].BoothNo,
+                        initatorComp:item.Initator[0].companyName
+                  })
+              }
+          }))
+          .map(arr => arr.filter(obj=>obj.state === "2").concat(arr.filter(obj=>obj.state !== "2")))               
           .catch(this.handleError)
     }
 
     rejectVisitor(_id) {
         // return Observable.of(true).delay(1e3)
         return this.http
-            .put(this.serverUrl + this.optVistiorUrl +'/'+ _id,{
-                params:{setValue:{State:"审核未通过"}}
+            .put(this.serverUrl + this.optVistiorUrl,{
+                params:{"InvitationInfoId":_id,setValue:{State:"1"}}
             })
             .catch(this.handleError)
     }
     agreeVisitor(_id) {
         // return Observable.of(true).delay(1e3)
         return this.http
-            .put(this.serverUrl + this.optVistiorUrl +'/'+ _id,{
-                params:{setValue:{State:"未答复"}}
+            .put(this.serverUrl + this.optVistiorUrl,{
+                params:{"InvitationInfoId":_id,setValue:{State:"2"}}
             })
             .catch(this.handleError)
     }
     rejectExhibitor(_id){
         return this.http
-            .put(this.serverUrl + this.optExhibitorUrl +'/'+ _id,{
-                params:{setValue:{State:"审核未通过"}}
+            .put(this.serverUrl + this.optExhibitorUrl,{
+                params:{"ExhiInvInfoId":_id,setValue:{State:"1"}}
             })
             .catch(this.handleError)
     }
     agreeExhibitor(_id){
         return this.http
-            .put(this.serverUrl + this.optExhibitorUrl +'/'+ _id,{
-                params:{setValue:{State:"未答复"}}
+            .put(this.serverUrl + this.optExhibitorUrl,{
+                params:{"ExhiInvInfoId":_id,setValue:{State:"2"}}
             })
             .catch(this.handleError)
     }

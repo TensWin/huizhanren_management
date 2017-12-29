@@ -2,6 +2,7 @@ import { Routes } from '@angular/router'
 import { AppComponent } from '../app.component'
 import { HallComponent } from "./hall/hall.component"
 import { LoginComponent } from './page/login/login.component'
+import { OptionComponent } from './page/option/option.component'
 import { LayoutComponent } from '../../app/layout/layout.component'
 import { AuthGuard } from '../core/services/auth-guard.service'
 export const routes: Routes = [
@@ -9,9 +10,12 @@ export const routes: Routes = [
     path: 'login', component: LoginComponent
   },
   {
+    path: 'option',component: OptionComponent
+  },
+  {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

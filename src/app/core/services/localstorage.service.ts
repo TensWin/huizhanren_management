@@ -14,7 +14,9 @@ export class LocalStorageService {
   get userId(){
     return this.get('userId')
   }
-
+  get exhibitionId(){
+    return this.get('exhibitionId')
+  }
   set(key: string, value: any) {
     store.set(key, value)
   }
